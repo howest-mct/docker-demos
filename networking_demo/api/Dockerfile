@@ -26,9 +26,13 @@ COPY ./app .
 # Set PATH to include locally installed binaries
 ENV PATH="/home/appuser/.local/bin:$PATH"
 
+
 # Security: Create a non-root user and switch to it
 RUN adduser -D appuser
+RUN mkdir -p /mnt/data/storage && chown -R appuser:appuser /mnt
 USER appuser
+
+
 
 # Run the FastAPI application
 CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "80"]
