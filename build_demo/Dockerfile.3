@@ -1,5 +1,5 @@
 # 1️⃣ Stage 1: Build dependencies, name this image as `builder` image.
-FROM python:3.13-slim AS builder
+FROM python:3.14-slim AS builder
 WORKDIR /app
 
 # Extra build packages for some dependencies
@@ -12,7 +12,7 @@ RUN pip install --no-cache-dir --user -r requirements.txt
 
 
 # 2️⃣ Stage 2: Final image (minimal), name this image as `production`
-FROM python:3.13-slim AS production
+FROM python:3.14-slim AS production
 WORKDIR /app
 
 # ⬆️ Moved up because it's a layer that can be reused easier. Security best-practice to run as non-root
