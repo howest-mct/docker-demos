@@ -67,3 +67,10 @@ Docker watch can also detect file changes to sync and restart your container if 
 - Go to `dockerignore_demo/` and run `docker compose up --build`.
 - Compare the output of `without-ignore` and `with-ignore`.
 - `with-ignore` excludes `secret.env` and `tmp/` from the image build context.
+
+## depends_on + healthcheck demo
+
+- Go to `depends_on_health_demo/` and run `docker compose up --build`.
+- Open `http://localhost:8090` for an always-on UI that polls API health and shows an orange dot while the API warms up.
+- The same status UI also reads container state for `api` and `delayed-ui` via a Docker socket-backed internal API.
+- Open `http://localhost:8091` for a frontend that starts only after API health is `healthy` using `depends_on` with `condition: service_healthy`.
