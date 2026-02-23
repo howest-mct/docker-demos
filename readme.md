@@ -61,3 +61,9 @@ services:
 - `docker watch` makes it easier for you to develop your application and use auto-reloading and auto-rebuilding tools included in Docker Compose.
 Use this when you want to automatically rebuild your application into a new Docker image as soon as your requirements or your config files are changed and your app needs to be restarted and rebuilt.
 Docker watch can also detect file changes to sync and restart your container if needed. These are not copied into the build of your app.
+
+## .dockerignore demo
+
+- Go to `dockerignore_demo/` and run `docker compose up --build`.
+- Compare the output of `without-ignore` and `with-ignore`.
+- `with-ignore` excludes `secret.env` and `tmp/` from the image build context.
